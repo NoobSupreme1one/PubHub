@@ -87,6 +87,8 @@ export default {
 				'material-md': 'var(--shadow-md)',
 				'material-lg': 'var(--shadow-lg)',
 				'material-xl': 'var(--shadow-xl)',
+				'elevated': 'var(--shadow-elevated)',
+				'premium': 'var(--shadow-premium)',
 			},
 			keyframes: {
 				'accordion-down': {
