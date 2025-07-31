@@ -11,7 +11,26 @@ import {
   AlertCircle,
   ArrowRight,
   Check,
-  LogOut
+  LogOut,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Globe,
+  Zap,
+  TrendingUp,
+  Users,
+  Calendar,
+  BarChart3,
+  Target,
+  FileText,
+  Plus,
+  Brain,
+  Building,
+  Sparkles,
+  X,
+  Settings,
+  Unlink,
+  Edit
 } from 'lucide-react'
 
 export const Icons = {
@@ -45,4 +64,23 @@ export const Icons = {
       />
     </svg>
   ),
+  linkedin: Linkedin,
+  twitter: Twitter,
+  instagram: Instagram,
+  globe: Globe,
+  zap: Zap,
+  trendingUp: TrendingUp,
+  users: Users,
+  calendar: Calendar,
+  barChart: BarChart3,
+  target: Target,
+  fileText: FileText,
+  plus: Plus,
+  brain: Brain,
+  building: Building,
+  sparkles: Sparkles,
+  x: X,
+  settings: Settings,
+  unlink: Unlink,
+  edit: Edit,
 } 

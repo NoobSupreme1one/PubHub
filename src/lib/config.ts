@@ -125,29 +125,29 @@ const defaultConfig: AppConfig = {
   },
   platforms: {
     facebook: {
-      appId: '',
-      appSecret: '',
-      enabled: false
+      appId: import.meta.env.VITE_FACEBOOK_APP_ID || '',
+      appSecret: import.meta.env.VITE_FACEBOOK_APP_SECRET || '',
+      enabled: !!(import.meta.env.VITE_FACEBOOK_APP_ID && import.meta.env.VITE_FACEBOOK_APP_SECRET)
     },
     linkedin: {
-      clientId: '',
-      clientSecret: '',
-      enabled: false
+      clientId: import.meta.env.VITE_LINKEDIN_CLIENT_ID || '',
+      clientSecret: import.meta.env.VITE_LINKEDIN_CLIENT_SECRET || '',
+      enabled: !!(import.meta.env.VITE_LINKEDIN_CLIENT_ID && import.meta.env.VITE_LINKEDIN_CLIENT_SECRET)
     },
     twitter: {
-      apiKey: '',
-      apiSecret: '',
-      enabled: false
+      apiKey: import.meta.env.VITE_TWITTER_API_KEY || '',
+      apiSecret: import.meta.env.VITE_TWITTER_API_SECRET || '',
+      enabled: !!(import.meta.env.VITE_TWITTER_API_KEY && import.meta.env.VITE_TWITTER_API_SECRET)
     },
     instagram: {
-      appId: '',
-      appSecret: '',
-      enabled: false
+      appId: import.meta.env.VITE_INSTAGRAM_APP_ID || '',
+      appSecret: import.meta.env.VITE_INSTAGRAM_APP_SECRET || '',
+      enabled: !!(import.meta.env.VITE_INSTAGRAM_APP_ID && import.meta.env.VITE_INSTAGRAM_APP_SECRET)
     },
     pinterest: {
-      appId: '',
-      appSecret: '',
-      enabled: false
+      appId: import.meta.env.VITE_PINTEREST_APP_ID || '',
+      appSecret: import.meta.env.VITE_PINTEREST_APP_SECRET || '',
+      enabled: !!(import.meta.env.VITE_PINTEREST_APP_ID && import.meta.env.VITE_PINTEREST_APP_SECRET)
     }
   },
   app: {

@@ -17,6 +17,11 @@ import Templates from "./pages/Templates";
 import WordPress from "./pages/WordPress";
 import WordPressConnect from "./pages/WordPressConnect";
 import WordPressGenerate from "./pages/WordPressGenerate";
+import LinkedIn from "./pages/LinkedIn";
+import LinkedInConnect from "./pages/LinkedInConnect";
+import LinkedInPublish from "./pages/LinkedInPublish";
+import Facebook from "./pages/Facebook";
+import FacebookConnect from "./pages/FacebookConnect";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
@@ -110,6 +115,35 @@ const App = () => (
               </ProtectedRoute>
             } />
             
+            {/* LinkedIn Routes */}
+            <Route path="/linkedin" element={
+              <ProtectedRoute>
+                <LinkedIn />
+              </ProtectedRoute>
+            } />
+            <Route path="/linkedin/connect" element={
+              <ProtectedRoute>
+                <LinkedInConnect />
+              </ProtectedRoute>
+            } />
+            <Route path="/linkedin/publish" element={
+              <ProtectedRoute>
+                <LinkedInPublish />
+              </ProtectedRoute>
+            } />
+
+            {/* Facebook Routes */}
+            <Route path="/facebook" element={
+              <ProtectedRoute>
+                <Facebook />
+              </ProtectedRoute>
+            } />
+            <Route path="/facebook/connect" element={
+              <ProtectedRoute>
+                <FacebookConnect />
+              </ProtectedRoute>
+            } />
+
             {/* Profile Route */}
             <Route path="/profile" element={
               <ProtectedRoute>

@@ -1,1647 +1,1188 @@
-<testsuites id="" name="" tests="42" failures="34" skipped="0" errors="0" time="127.390372">
-<testsuite name="comprehensive-test-suite.spec.ts" timestamp="2025-07-31T10:30:02.154Z" hostname="chromium" tests="42" failures="34" skipped="0" time="859.357" errors="0">
-<testcase name="PubHub Comprehensive Test Suite › Authentication Flow › should redirect unauthenticated users to sign-in page" classname="comprehensive-test-suite.spec.ts" time="0.791">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Authentication Flow › should show sign-in page with all form elements" classname="comprehensive-test-suite.spec.ts" time="11.145">
-<failure message="comprehensive-test-suite.spec.ts:32:5 should show sign-in page with all form elements" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:32:5 › PubHub Comprehensive Test Suite › Authentication Flow › should show sign-in page with all form elements 
+<testsuites id="" name="" tests="50" failures="31" skipped="19" errors="0" time="118.12812800000002">
+<testsuite name="facebook-integration.spec.ts" timestamp="2025-07-31T11:55:52.480Z" hostname="chromium" tests="10" failures="10" skipped="0" time="301.203" errors="0">
+<testcase name="Facebook Integration › should display Facebook integration page" classname="facebook-integration.spec.ts" time="30.133">
+<failure message="facebook-integration.spec.ts:26:3 should display Facebook integration page" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:26:3 › Facebook Integration › should display Facebook integration page 
 
-    Error: Timed out 10000ms waiting for expect(locator).toBeVisible()
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Locator: getByText(/Google/)
-    Expected: visible
-    Received: <element(s) not found>
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toBeVisible" with timeout 10000ms
-      - waiting for getByText(/Google/)
+      - waiting for locator('input[type="email"]')
 
 
-      39 |       
-      40 |       // Check OAuth buttons
-    > 41 |       await expect(page.getByText(/Google/)).toBeVisible();
-         |                                              ^
-      42 |       await expect(page.getByText(/GitHub/)).toBeVisible();
-      43 |       await expect(page.getByText(/Facebook/)).toBeVisible();
-      44 |       
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:41:46
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-a2076-page-with-all-form-elements-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-16504-y-Facebook-integration-page-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-a2076-page-with-all-form-elements-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-a2076-page-with-all-form-elements-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-a2076-page-with-all-form-elements-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-a2076-page-with-all-form-elements-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-a2076-page-with-all-form-elements-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-16504-y-Facebook-integration-page-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Authentication Flow › should show sign-up page with all form elements" classname="comprehensive-test-suite.spec.ts" time="0.801">
-<failure message="comprehensive-test-suite.spec.ts:50:5 should show sign-up page with all form elements" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:50:5 › PubHub Comprehensive Test Suite › Authentication Flow › should show sign-up page with all form elements 
+<testcase name="Facebook Integration › should show configuration error when Facebook is not configured" classname="facebook-integration.spec.ts" time="30.124">
+<failure message="facebook-integration.spec.ts:38:3 should show configuration error when Facebook is not configured" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:38:3 › Facebook Integration › should show configuration error when Facebook is not configured 
 
-    Error: expect.toBeVisible: Error: strict mode violation: locator('input[type="password"]') resolved to 2 elements:
-        1) <input value="" required="" id="password" type="password" data-lov-name="Input" data-component-line="154" data-component-name="Input" placeholder="Create a password" data-component-file="SignUp.tsx" data-lov-id="src/pages/auth/SignUp.tsx:154:16" data-component-path="src/pages/auth/SignUp.tsx" data-component-content="%7B%22placeholder%22%3A%22Create%20a%20password%22%7D" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:b…/> aka getByRole('textbox', { name: 'Password', exact: true })
-        2) <input value="" required="" type="password" id="confirmPassword" data-lov-name="Input" data-component-line="167" data-component-name="Input" data-component-file="SignUp.tsx" placeholder="Confirm your password" data-lov-id="src/pages/auth/SignUp.tsx:167:16" data-component-path="src/pages/auth/SignUp.tsx" data-component-content="%7B%22placeholder%22%3A%22Confirm%20your%20password%22%7D" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:…/> aka getByRole('textbox', { name: 'Confirm Password' })
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toBeVisible" with timeout 10000ms
-      - waiting for locator('input[type="password"]')
+      - waiting for locator('input[type="email"]')
 
 
-      53 |       // Check form elements
-      54 |       await expect(page.locator('input[type="email"]')).toBeVisible();
-    > 55 |       await expect(page.locator('input[type="password"]')).toBeVisible();
-         |                                                            ^
-      56 |       await expect(page.locator('input[name="confirmPassword"]')).toBeVisible();
-      57 |       await expect(page.locator('input[name="fullName"]')).toBeVisible();
-      58 |       await expect(page.locator('button[type="submit"]')).toBeVisible();
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:55:60
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-2cc62-page-with-all-form-elements-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-38097--Facebook-is-not-configured-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-2cc62-page-with-all-form-elements-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-2cc62-page-with-all-form-elements-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-2cc62-page-with-all-form-elements-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-2cc62-page-with-all-form-elements-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-2cc62-page-with-all-form-elements-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-38097--Facebook-is-not-configured-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Authentication Flow › should navigate between auth pages" classname="comprehensive-test-suite.spec.ts" time="30.823">
-<failure message="comprehensive-test-suite.spec.ts:66:5 should navigate between auth pages" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:66:5 › PubHub Comprehensive Test Suite › Authentication Flow › should navigate between auth pages 
+<testcase name="Facebook Integration › should navigate to Facebook connect page" classname="facebook-integration.spec.ts" time="30.133">
+<failure message="facebook-integration.spec.ts:53:3 should navigate to Facebook connect page" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:53:3 › Facebook Integration › should navigate to Facebook connect page 
 
-    Test timeout of 30000ms exceeded.
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Error: page.click: Test timeout of 30000ms exceeded.
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - waiting for locator('a[href="/signup"]')
+      - waiting for locator('input[type="email"]')
 
 
-      68 |       
-      69 |       // Navigate to sign-up
-    > 70 |       await page.click('a[href="/signup"]');
-         |                  ^
-      71 |       await expect(page).toHaveURL(/.*signup/);
-      72 |       
-      73 |       // Navigate to forgot password
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:70:18
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-c32cc-navigate-between-auth-pages-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-697aa-te-to-Facebook-connect-page-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-c32cc-navigate-between-auth-pages-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-c32cc-navigate-between-auth-pages-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-c32cc-navigate-between-auth-pages-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-c32cc-navigate-between-auth-pages-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-c32cc-navigate-between-auth-pages-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-697aa-te-to-Facebook-connect-page-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Authentication Flow › should show forgot password page" classname="comprehensive-test-suite.spec.ts" time="11.137">
-<failure message="comprehensive-test-suite.spec.ts:82:5 should show forgot password page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:82:5 › PubHub Comprehensive Test Suite › Authentication Flow › should show forgot password page 
+<testcase name="Facebook Integration › should handle OAuth callback flow" classname="facebook-integration.spec.ts" time="30.136">
+<failure message="facebook-integration.spec.ts:64:3 should handle OAuth callback flow" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:64:3 › Facebook Integration › should handle OAuth callback flow 
 
-    Error: Timed out 10000ms waiting for expect(locator).toBeVisible()
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Locator: getByText(/Reset Password/)
-    Expected: visible
-    Received: <element(s) not found>
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toBeVisible" with timeout 10000ms
-      - waiting for getByText(/Reset Password/)
+      - waiting for locator('input[type="email"]')
 
 
-      85 |       await expect(page.locator('input[type="email"]')).toBeVisible();
-      86 |       await expect(page.locator('button[type="submit"]')).toBeVisible();
-    > 87 |       await expect(page.getByText(/Reset Password/)).toBeVisible();
-         |                                                      ^
-      88 |     });
-      89 |
-      90 |     test('should show loading state when checking authentication', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:87:54
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-e1794-d-show-forgot-password-page-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-0c032--handle-OAuth-callback-flow-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-e1794-d-show-forgot-password-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-e1794-d-show-forgot-password-page-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-e1794-d-show-forgot-password-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-e1794-d-show-forgot-password-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-e1794-d-show-forgot-password-page-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-0c032--handle-OAuth-callback-flow-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Authentication Flow › should show loading state when checking authentication" classname="comprehensive-test-suite.spec.ts" time="0.853">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Public Pages › should show terms of service page" classname="comprehensive-test-suite.spec.ts" time="11.257">
-<failure message="comprehensive-test-suite.spec.ts:103:5 should show terms of service page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:103:5 › PubHub Comprehensive Test Suite › Public Pages › should show terms of service page 
+<testcase name="Facebook Integration › should display empty state when no Facebook accounts connected" classname="facebook-integration.spec.ts" time="30.137">
+<failure message="facebook-integration.spec.ts:76:3 should display empty state when no Facebook accounts connected" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:76:3 › Facebook Integration › should display empty state when no Facebook accounts connected 
 
-    Error: Timed out 10000ms waiting for expect(page).toHaveTitle(expected)
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Expected pattern: /Terms of Service/
-    Received string:  "PubHub - Multi-Platform Content Distribution"
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toHaveTitle" with timeout 10000ms
-        14 × unexpected value "PubHub - Multi-Platform Content Distribution"
+      - waiting for locator('input[type="email"]')
 
 
-      103 |     test('should show terms of service page', async ({ page }) => {
-      104 |       await page.goto('http://localhost:8082/terms');
-    > 105 |       await expect(page).toHaveTitle(/Terms of Service/);
-          |                          ^
-      106 |       await expect(page.getByText(/Terms of Service/)).toBeVisible();
-      107 |     });
-      108 |
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:105:26
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-d37f4--show-terms-of-service-page-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-abdef-Facebook-accounts-connected-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-d37f4--show-terms-of-service-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-d37f4--show-terms-of-service-page-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-d37f4--show-terms-of-service-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-d37f4--show-terms-of-service-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-d37f4--show-terms-of-service-page-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-abdef-Facebook-accounts-connected-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Public Pages › should show privacy policy page" classname="comprehensive-test-suite.spec.ts" time="11.198">
-<failure message="comprehensive-test-suite.spec.ts:109:5 should show privacy policy page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:109:5 › PubHub Comprehensive Test Suite › Public Pages › should show privacy policy page 
+<testcase name="Facebook Integration › should validate Facebook client configuration methods" classname="facebook-integration.spec.ts" time="30.126">
+<failure message="facebook-integration.spec.ts:84:3 should validate Facebook client configuration methods" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:84:3 › Facebook Integration › should validate Facebook client configuration methods 
 
-    Error: Timed out 10000ms waiting for expect(page).toHaveTitle(expected)
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Expected pattern: /Privacy Policy/
-    Received string:  "PubHub - Multi-Platform Content Distribution"
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toHaveTitle" with timeout 10000ms
-        14 × unexpected value "PubHub - Multi-Platform Content Distribution"
+      - waiting for locator('input[type="email"]')
 
 
-      109 |     test('should show privacy policy page', async ({ page }) => {
-      110 |       await page.goto('http://localhost:8082/privacy');
-    > 111 |       await expect(page).toHaveTitle(/Privacy Policy/);
-          |                          ^
-      112 |       await expect(page.getByText(/Privacy Policy/)).toBeVisible();
-      113 |     });
-      114 |
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:111:26
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-5e2fc-ld-show-privacy-policy-page-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-cf43b-lient-configuration-methods-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-5e2fc-ld-show-privacy-policy-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-5e2fc-ld-show-privacy-policy-page-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-5e2fc-ld-show-privacy-policy-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-5e2fc-ld-show-privacy-policy-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-5e2fc-ld-show-privacy-policy-page-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-cf43b-lient-configuration-methods-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Public Pages › should show 404 page for invalid routes" classname="comprehensive-test-suite.spec.ts" time="10.702">
-<failure message="comprehensive-test-suite.spec.ts:115:5 should show 404 page for invalid routes" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:115:5 › PubHub Comprehensive Test Suite › Public Pages › should show 404 page for invalid routes 
+<testcase name="Facebook Integration › should have proper routing for Facebook pages" classname="facebook-integration.spec.ts" time="30.136">
+<failure message="facebook-integration.spec.ts:113:3 should have proper routing for Facebook pages" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:113:3 › Facebook Integration › should have proper routing for Facebook pages 
 
-    Error: Timed out 10000ms waiting for expect(locator).toBeVisible()
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Locator: getByText(/Page Not Found/)
-    Expected: visible
-    Received: <element(s) not found>
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toBeVisible" with timeout 10000ms
-      - waiting for getByText(/Page Not Found/)
+      - waiting for locator('input[type="email"]')
 
 
-      116 |       await page.goto('http://localhost:8082/invalid-route');
-      117 |       await expect(page.getByText(/404/)).toBeVisible();
-    > 118 |       await expect(page.getByText(/Page Not Found/)).toBeVisible();
-          |                                                      ^
-      119 |     });
-      120 |   });
-      121 |
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:118:54
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-cd78b-404-page-for-invalid-routes-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-362fe--routing-for-Facebook-pages-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-cd78b-404-page-for-invalid-routes-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-cd78b-404-page-for-invalid-routes-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-cd78b-404-page-for-invalid-routes-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-cd78b-404-page-for-invalid-routes-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-cd78b-404-page-for-invalid-routes-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-362fe--routing-for-Facebook-pages-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access dashboard after authentication" classname="comprehensive-test-suite.spec.ts" time="30.609">
-<failure message="comprehensive-test-suite.spec.ts:138:5 should access dashboard after authentication" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:138:5 › PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access dashboard after authentication 
+<testcase name="Facebook Integration › should display Facebook integration in navigation or dashboard" classname="facebook-integration.spec.ts" time="30.133">
+<failure message="facebook-integration.spec.ts:127:3 should display Facebook integration in navigation or dashboard" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:127:3 › Facebook Integration › should display Facebook integration in navigation or dashboard 
 
     Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-      125 |
-      126 |   test.describe('Protected Routes (Authenticated)', () => {
-    > 127 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      128 |       // Sign in before each test
-      129 |       await page.goto('http://localhost:8082/signin');
-      130 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:127:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      133 |       
-      134 |       // Wait for redirect to dashboard
-    > 135 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      136 |     });
-      137 |
-      138 |     test('should access dashboard after authentication', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:135:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-88650-hboard-after-authentication-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-88650-hboard-after-authentication-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-88650-hboard-after-authentication-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-88650-hboard-after-authentication-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-88650-hboard-after-authentication-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-88650-hboard-after-authentication-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access campaigns page" classname="comprehensive-test-suite.spec.ts" time="30.612">
-<failure message="comprehensive-test-suite.spec.ts:143:5 should access campaigns page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:143:5 › PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access campaigns page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      125 |
-      126 |   test.describe('Protected Routes (Authenticated)', () => {
-    > 127 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      128 |       // Sign in before each test
-      129 |       await page.goto('http://localhost:8082/signin');
-      130 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:127:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      133 |       
-      134 |       // Wait for redirect to dashboard
-    > 135 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      136 |     });
-      137 |
-      138 |     test('should access dashboard after authentication', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:135:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-89df4-hould-access-campaigns-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-89df4-hould-access-campaigns-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-89df4-hould-access-campaigns-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-89df4-hould-access-campaigns-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-89df4-hould-access-campaigns-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-89df4-hould-access-campaigns-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access templates page" classname="comprehensive-test-suite.spec.ts" time="30.798">
-<failure message="comprehensive-test-suite.spec.ts:149:5 should access templates page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:149:5 › PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access templates page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      125 |
-      126 |   test.describe('Protected Routes (Authenticated)', () => {
-    > 127 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      128 |       // Sign in before each test
-      129 |       await page.goto('http://localhost:8082/signin');
-      130 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:127:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      133 |       
-      134 |       // Wait for redirect to dashboard
-    > 135 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      136 |     });
-      137 |
-      138 |     test('should access dashboard after authentication', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:135:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-9d819-hould-access-templates-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-9d819-hould-access-templates-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-9d819-hould-access-templates-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-9d819-hould-access-templates-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-9d819-hould-access-templates-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-9d819-hould-access-templates-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access WordPress page" classname="comprehensive-test-suite.spec.ts" time="30.773">
-<failure message="comprehensive-test-suite.spec.ts:155:5 should access WordPress page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:155:5 › PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access WordPress page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      125 |
-      126 |   test.describe('Protected Routes (Authenticated)', () => {
-    > 127 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      128 |       // Sign in before each test
-      129 |       await page.goto('http://localhost:8082/signin');
-      130 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:127:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      133 |       
-      134 |       // Wait for redirect to dashboard
-    > 135 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      136 |     });
-      137 |
-      138 |     test('should access dashboard after authentication', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:135:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-54f55-hould-access-WordPress-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-54f55-hould-access-WordPress-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-54f55-hould-access-WordPress-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-54f55-hould-access-WordPress-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-54f55-hould-access-WordPress-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-54f55-hould-access-WordPress-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access profile page" classname="comprehensive-test-suite.spec.ts" time="30.785">
-<failure message="comprehensive-test-suite.spec.ts:161:5 should access profile page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:161:5 › PubHub Comprehensive Test Suite › Protected Routes (Authenticated) › should access profile page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      125 |
-      126 |   test.describe('Protected Routes (Authenticated)', () => {
-    > 127 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      128 |       // Sign in before each test
-      129 |       await page.goto('http://localhost:8082/signin');
-      130 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:127:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      133 |       
-      134 |       // Wait for redirect to dashboard
-    > 135 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      136 |     });
-      137 |
-      138 |     test('should access dashboard after authentication', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:135:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-bbd7e--should-access-profile-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-bbd7e--should-access-profile-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-bbd7e--should-access-profile-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-bbd7e--should-access-profile-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-bbd7e--should-access-profile-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-bbd7e--should-access-profile-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Campaign Management › should create a new campaign" classname="comprehensive-test-suite.spec.ts" time="30.793">
-<failure message="comprehensive-test-suite.spec.ts:182:5 should create a new campaign" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:182:5 › PubHub Comprehensive Test Suite › Campaign Management › should create a new campaign 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      171 |
-      172 |   test.describe('Campaign Management', () => {
-    > 173 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      174 |       // Sign in before each test
-      175 |       await page.goto('http://localhost:8082/signin');
-      176 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:173:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      177 |       await page.fill('input[type="password"]', testUser.password);
-      178 |       await page.click('button[type="submit"]');
-    > 179 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      180 |     });
-      181 |
-      182 |     test('should create a new campaign', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:179:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-597d8-hould-create-a-new-campaign-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-597d8-hould-create-a-new-campaign-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-597d8-hould-create-a-new-campaign-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-597d8-hould-create-a-new-campaign-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-597d8-hould-create-a-new-campaign-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-597d8-hould-create-a-new-campaign-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Campaign Management › should view campaign list" classname="comprehensive-test-suite.spec.ts" time="30.777">
-<failure message="comprehensive-test-suite.spec.ts:196:5 should view campaign list" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:196:5 › PubHub Comprehensive Test Suite › Campaign Management › should view campaign list 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      171 |
-      172 |   test.describe('Campaign Management', () => {
-    > 173 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      174 |       // Sign in before each test
-      175 |       await page.goto('http://localhost:8082/signin');
-      176 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:173:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      177 |       await page.fill('input[type="password"]', testUser.password);
-      178 |       await page.click('button[type="submit"]');
-    > 179 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      180 |     });
-      181 |
-      182 |     test('should create a new campaign', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:179:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-688ed-t-should-view-campaign-list-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-688ed-t-should-view-campaign-list-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-688ed-t-should-view-campaign-list-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-688ed-t-should-view-campaign-list-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-688ed-t-should-view-campaign-list-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-688ed-t-should-view-campaign-list-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Campaign Management › should edit an existing campaign" classname="comprehensive-test-suite.spec.ts" time="30.563">
-<failure message="comprehensive-test-suite.spec.ts:204:5 should edit an existing campaign" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:204:5 › PubHub Comprehensive Test Suite › Campaign Management › should edit an existing campaign 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      171 |
-      172 |   test.describe('Campaign Management', () => {
-    > 173 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      174 |       // Sign in before each test
-      175 |       await page.goto('http://localhost:8082/signin');
-      176 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:173:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      177 |       await page.fill('input[type="password"]', testUser.password);
-      178 |       await page.click('button[type="submit"]');
-    > 179 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      180 |     });
-      181 |
-      182 |     test('should create a new campaign', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:179:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-fa32d-d-edit-an-existing-campaign-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-fa32d-d-edit-an-existing-campaign-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-fa32d-d-edit-an-existing-campaign-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-fa32d-d-edit-an-existing-campaign-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-fa32d-d-edit-an-existing-campaign-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-fa32d-d-edit-an-existing-campaign-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Campaign Management › should schedule a campaign" classname="comprehensive-test-suite.spec.ts" time="30.586">
-<failure message="comprehensive-test-suite.spec.ts:218:5 should schedule a campaign" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:218:5 › PubHub Comprehensive Test Suite › Campaign Management › should schedule a campaign 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      171 |
-      172 |   test.describe('Campaign Management', () => {
-    > 173 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      174 |       // Sign in before each test
-      175 |       await page.goto('http://localhost:8082/signin');
-      176 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:173:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      177 |       await page.fill('input[type="password"]', testUser.password);
-      178 |       await page.click('button[type="submit"]');
-    > 179 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      180 |     });
-      181 |
-      182 |     test('should create a new campaign', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:179:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-42db4--should-schedule-a-campaign-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-42db4--should-schedule-a-campaign-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-42db4--should-schedule-a-campaign-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-42db4--should-schedule-a-campaign-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-42db4--should-schedule-a-campaign-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-42db4--should-schedule-a-campaign-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Campaign Management › should view campaign details" classname="comprehensive-test-suite.spec.ts" time="30.609">
-<failure message="comprehensive-test-suite.spec.ts:226:5 should view campaign details" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:226:5 › PubHub Comprehensive Test Suite › Campaign Management › should view campaign details 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      171 |
-      172 |   test.describe('Campaign Management', () => {
-    > 173 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      174 |       // Sign in before each test
-      175 |       await page.goto('http://localhost:8082/signin');
-      176 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:173:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      177 |       await page.fill('input[type="password"]', testUser.password);
-      178 |       await page.click('button[type="submit"]');
-    > 179 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      180 |     });
-      181 |
-      182 |     test('should create a new campaign', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:179:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-6b59a-hould-view-campaign-details-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-6b59a-hould-view-campaign-details-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-6b59a-hould-view-campaign-details-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-6b59a-hould-view-campaign-details-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-6b59a-hould-view-campaign-details-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-6b59a-hould-view-campaign-details-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › WordPress Integration › should access WordPress main page" classname="comprehensive-test-suite.spec.ts" time="30.744">
-<failure message="comprehensive-test-suite.spec.ts:248:5 should access WordPress main page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:248:5 › PubHub Comprehensive Test Suite › WordPress Integration › should access WordPress main page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      237 |
-      238 |   test.describe('WordPress Integration', () => {
-    > 239 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      240 |       // Sign in before each test
-      241 |       await page.goto('http://localhost:8082/signin');
-      242 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:239:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      243 |       await page.fill('input[type="password"]', testUser.password);
-      244 |       await page.click('button[type="submit"]');
-    > 245 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      246 |     });
-      247 |
-      248 |     test('should access WordPress main page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:245:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-937d2--access-WordPress-main-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-937d2--access-WordPress-main-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-937d2--access-WordPress-main-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-937d2--access-WordPress-main-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-937d2--access-WordPress-main-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-937d2--access-WordPress-main-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › WordPress Integration › should access WordPress connect page" classname="comprehensive-test-suite.spec.ts" time="30.738">
-<failure message="comprehensive-test-suite.spec.ts:256:5 should access WordPress connect page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:256:5 › PubHub Comprehensive Test Suite › WordPress Integration › should access WordPress connect page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      237 |
-      238 |   test.describe('WordPress Integration', () => {
-    > 239 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      240 |       // Sign in before each test
-      241 |       await page.goto('http://localhost:8082/signin');
-      242 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:239:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      243 |       await page.fill('input[type="password"]', testUser.password);
-      244 |       await page.click('button[type="submit"]');
-    > 245 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      246 |     });
-      247 |
-      248 |     test('should access WordPress main page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:245:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-24dbc-cess-WordPress-connect-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-24dbc-cess-WordPress-connect-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-24dbc-cess-WordPress-connect-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-24dbc-cess-WordPress-connect-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-24dbc-cess-WordPress-connect-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-24dbc-cess-WordPress-connect-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › WordPress Integration › should access WordPress generate page" classname="comprehensive-test-suite.spec.ts" time="30.749">
-<failure message="comprehensive-test-suite.spec.ts:265:5 should access WordPress generate page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:265:5 › PubHub Comprehensive Test Suite › WordPress Integration › should access WordPress generate page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      237 |
-      238 |   test.describe('WordPress Integration', () => {
-    > 239 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      240 |       // Sign in before each test
-      241 |       await page.goto('http://localhost:8082/signin');
-      242 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:239:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      243 |       await page.fill('input[type="password"]', testUser.password);
-      244 |       await page.click('button[type="submit"]');
-    > 245 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      246 |     });
-      247 |
-      248 |     test('should access WordPress main page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:245:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-8ef83-ess-WordPress-generate-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-8ef83-ess-WordPress-generate-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-8ef83-ess-WordPress-generate-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-8ef83-ess-WordPress-generate-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-8ef83-ess-WordPress-generate-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-8ef83-ess-WordPress-generate-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › WordPress Integration › should connect to WordPress site" classname="comprehensive-test-suite.spec.ts" time="30.74">
-<failure message="comprehensive-test-suite.spec.ts:273:5 should connect to WordPress site" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:273:5 › PubHub Comprehensive Test Suite › WordPress Integration › should connect to WordPress site 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      237 |
-      238 |   test.describe('WordPress Integration', () => {
-    > 239 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      240 |       // Sign in before each test
-      241 |       await page.goto('http://localhost:8082/signin');
-      242 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:239:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      243 |       await page.fill('input[type="password"]', testUser.password);
-      244 |       await page.click('button[type="submit"]');
-    > 245 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      246 |     });
-      247 |
-      248 |     test('should access WordPress main page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:245:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-acb8f-d-connect-to-WordPress-site-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-acb8f-d-connect-to-WordPress-site-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-acb8f-d-connect-to-WordPress-site-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-acb8f-d-connect-to-WordPress-site-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-acb8f-d-connect-to-WordPress-site-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-acb8f-d-connect-to-WordPress-site-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › WordPress Integration › should generate WordPress content" classname="comprehensive-test-suite.spec.ts" time="30.74">
-<failure message="comprehensive-test-suite.spec.ts:288:5 should generate WordPress content" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:288:5 › PubHub Comprehensive Test Suite › WordPress Integration › should generate WordPress content 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      237 |
-      238 |   test.describe('WordPress Integration', () => {
-    > 239 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      240 |       // Sign in before each test
-      241 |       await page.goto('http://localhost:8082/signin');
-      242 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:239:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      243 |       await page.fill('input[type="password"]', testUser.password);
-      244 |       await page.click('button[type="submit"]');
-    > 245 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      246 |     });
-      247 |
-      248 |     test('should access WordPress main page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:245:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-bd3ab--generate-WordPress-content-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-bd3ab--generate-WordPress-content-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-bd3ab--generate-WordPress-content-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-bd3ab--generate-WordPress-content-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-bd3ab--generate-WordPress-content-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-bd3ab--generate-WordPress-content-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Templates › should view templates page" classname="comprehensive-test-suite.spec.ts" time="30.681">
-<failure message="comprehensive-test-suite.spec.ts:316:5 should view templates page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:316:5 › PubHub Comprehensive Test Suite › Templates › should view templates page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      305 |
-      306 |   test.describe('Templates', () => {
-    > 307 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      308 |       // Sign in before each test
-      309 |       await page.goto('http://localhost:8082/signin');
-      310 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:307:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      311 |       await page.fill('input[type="password"]', testUser.password);
-      312 |       await page.click('button[type="submit"]');
-    > 313 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      314 |     });
-      315 |
-      316 |     test('should view templates page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:313:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-2b300--should-view-templates-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-2b300--should-view-templates-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-2b300--should-view-templates-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-2b300--should-view-templates-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-2b300--should-view-templates-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-2b300--should-view-templates-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Templates › should create a new template" classname="comprehensive-test-suite.spec.ts" time="30.599">
-<failure message="comprehensive-test-suite.spec.ts:323:5 should create a new template" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:323:5 › PubHub Comprehensive Test Suite › Templates › should create a new template 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      305 |
-      306 |   test.describe('Templates', () => {
-    > 307 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      308 |       // Sign in before each test
-      309 |       await page.goto('http://localhost:8082/signin');
-      310 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:307:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      311 |       await page.fill('input[type="password"]', testUser.password);
-      312 |       await page.click('button[type="submit"]');
-    > 313 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      314 |     });
-      315 |
-      316 |     test('should view templates page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:313:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-176bf-hould-create-a-new-template-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-176bf-hould-create-a-new-template-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-176bf-hould-create-a-new-template-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-176bf-hould-create-a-new-template-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-176bf-hould-create-a-new-template-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-176bf-hould-create-a-new-template-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › User Profile Management › should view profile page" classname="comprehensive-test-suite.spec.ts" time="30.616">
-<failure message="comprehensive-test-suite.spec.ts:355:5 should view profile page" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:355:5 › PubHub Comprehensive Test Suite › User Profile Management › should view profile page 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      344 |
-      345 |   test.describe('User Profile Management', () => {
-    > 346 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      347 |       // Sign in before each test
-      348 |       await page.goto('http://localhost:8082/signin');
-      349 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:346:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      350 |       await page.fill('input[type="password"]', testUser.password);
-      351 |       await page.click('button[type="submit"]');
-    > 352 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      353 |     });
-      354 |
-      355 |     test('should view profile page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:352:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-da261-nt-should-view-profile-page-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-da261-nt-should-view-profile-page-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-da261-nt-should-view-profile-page-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-da261-nt-should-view-profile-page-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-da261-nt-should-view-profile-page-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-da261-nt-should-view-profile-page-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › User Profile Management › should update profile information" classname="comprehensive-test-suite.spec.ts" time="30.781">
-<failure message="comprehensive-test-suite.spec.ts:362:5 should update profile information" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:362:5 › PubHub Comprehensive Test Suite › User Profile Management › should update profile information 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      344 |
-      345 |   test.describe('User Profile Management', () => {
-    > 346 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      347 |       // Sign in before each test
-      348 |       await page.goto('http://localhost:8082/signin');
-      349 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:346:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      350 |       await page.fill('input[type="password"]', testUser.password);
-      351 |       await page.click('button[type="submit"]');
-    > 352 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      353 |     });
-      354 |
-      355 |     test('should view profile page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:352:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-f82a1--update-profile-information-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-f82a1--update-profile-information-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-f82a1--update-profile-information-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-f82a1--update-profile-information-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-f82a1--update-profile-information-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-f82a1--update-profile-information-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › User Profile Management › should change password" classname="comprehensive-test-suite.spec.ts" time="30.801">
-<failure message="comprehensive-test-suite.spec.ts:379:5 should change password" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:379:5 › PubHub Comprehensive Test Suite › User Profile Management › should change password 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      344 |
-      345 |   test.describe('User Profile Management', () => {
-    > 346 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      347 |       // Sign in before each test
-      348 |       await page.goto('http://localhost:8082/signin');
-      349 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:346:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      350 |       await page.fill('input[type="password"]', testUser.password);
-      351 |       await page.click('button[type="submit"]');
-    > 352 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      353 |     });
-      354 |
-      355 |     test('should view profile page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:352:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-f7025-ment-should-change-password-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-f7025-ment-should-change-password-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-f7025-ment-should-change-password-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-f7025-ment-should-change-password-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-f7025-ment-should-change-password-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-f7025-ment-should-change-password-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › User Profile Management › should sign out" classname="comprehensive-test-suite.spec.ts" time="30.814">
-<failure message="comprehensive-test-suite.spec.ts:397:5 should sign out" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:397:5 › PubHub Comprehensive Test Suite › User Profile Management › should sign out 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      344 |
-      345 |   test.describe('User Profile Management', () => {
-    > 346 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      347 |       // Sign in before each test
-      348 |       await page.goto('http://localhost:8082/signin');
-      349 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:346:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      350 |       await page.fill('input[type="password"]', testUser.password);
-      351 |       await page.click('button[type="submit"]');
-    > 352 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      353 |     });
-      354 |
-      355 |     test('should view profile page', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:352:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-6631a--Management-should-sign-out-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-6631a--Management-should-sign-out-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-6631a--Management-should-sign-out-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-6631a--Management-should-sign-out-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-6631a--Management-should-sign-out-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-6631a--Management-should-sign-out-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Navigation › should navigate between all main pages" classname="comprehensive-test-suite.spec.ts" time="30.842">
-<failure message="comprehensive-test-suite.spec.ts:422:5 should navigate between all main pages" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:422:5 › PubHub Comprehensive Test Suite › Navigation › should navigate between all main pages 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      411 |
-      412 |   test.describe('Navigation', () => {
-    > 413 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      414 |       // Sign in before each test
-      415 |       await page.goto('http://localhost:8082/signin');
-      416 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:413:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      417 |       await page.fill('input[type="password"]', testUser.password);
-      418 |       await page.click('button[type="submit"]');
-    > 419 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      420 |     });
-      421 |
-      422 |     test('should navigate between all main pages', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:419:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-fb317-gate-between-all-main-pages-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-fb317-gate-between-all-main-pages-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-fb317-gate-between-all-main-pages-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-fb317-gate-between-all-main-pages-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-fb317-gate-between-all-main-pages-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-fb317-gate-between-all-main-pages-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Navigation › should use navigation menu" classname="comprehensive-test-suite.spec.ts" time="30.799">
-<failure message="comprehensive-test-suite.spec.ts:444:5 should use navigation menu" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:444:5 › PubHub Comprehensive Test Suite › Navigation › should use navigation menu 
-
-    Test timeout of 30000ms exceeded while running "beforeEach" hook.
-
-      411 |
-      412 |   test.describe('Navigation', () => {
-    > 413 |     test.beforeEach(async ({ page }) => {
-          |          ^
-      414 |       // Sign in before each test
-      415 |       await page.goto('http://localhost:8082/signin');
-      416 |       await page.fill('input[type="email"]', testUser.email);
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:413:10
-
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
-
-      417 |       await page.fill('input[type="password"]', testUser.password);
-      418 |       await page.click('button[type="submit"]');
-    > 419 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      420 |     });
-      421 |
-      422 |     test('should navigate between all main pages', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:419:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-160c8--should-use-navigation-menu-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-160c8--should-use-navigation-menu-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-160c8--should-use-navigation-menu-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-160c8--should-use-navigation-menu-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-160c8--should-use-navigation-menu-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-160c8--should-use-navigation-menu-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Responsive Design › should work on mobile viewport" classname="comprehensive-test-suite.spec.ts" time="0.348">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Responsive Design › should work on tablet viewport" classname="comprehensive-test-suite.spec.ts" time="0.339">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Responsive Design › should work on desktop viewport" classname="comprehensive-test-suite.spec.ts" time="0.349">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Error Handling › should handle invalid email format" classname="comprehensive-test-suite.spec.ts" time="10.455">
-<failure message="comprehensive-test-suite.spec.ts:503:5 should handle invalid email format" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:503:5 › PubHub Comprehensive Test Suite › Error Handling › should handle invalid email format 
-
-    Error: Timed out 10000ms waiting for expect(locator).toBeVisible()
-
-    Locator: getByText(/Invalid email/)
-    Expected: visible
-    Received: <element(s) not found>
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toBeVisible" with timeout 10000ms
-      - waiting for getByText(/Invalid email/)
+      - waiting for locator('input[type="email"]')
 
 
-      509 |       
-      510 |       // Should show validation error
-    > 511 |       await expect(page.getByText(/Invalid email/)).toBeVisible();
-          |                                                     ^
-      512 |     });
-      513 |
-      514 |     test('should handle empty form submission', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:511:53
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-ae92b-handle-invalid-email-format-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-5986e--in-navigation-or-dashboard-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-ae92b-handle-invalid-email-format-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-ae92b-handle-invalid-email-format-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-ae92b-handle-invalid-email-format-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-ae92b-handle-invalid-email-format-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-ae92b-handle-invalid-email-format-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-5986e--in-navigation-or-dashboard-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Error Handling › should handle empty form submission" classname="comprehensive-test-suite.spec.ts" time="10.399">
-<failure message="comprehensive-test-suite.spec.ts:514:5 should handle empty form submission" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:514:5 › PubHub Comprehensive Test Suite › Error Handling › should handle empty form submission 
+<testcase name="Facebook Integration › should handle Facebook API errors gracefully" classname="facebook-integration.spec.ts" time="30.076">
+<failure message="facebook-integration.spec.ts:139:3 should handle Facebook API errors gracefully" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:139:3 › Facebook Integration › should handle Facebook API errors gracefully 
 
-    Error: Timed out 10000ms waiting for expect(locator).toBeVisible()
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Locator: getByText(/required/)
-    Expected: visible
-    Received: <element(s) not found>
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toBeVisible" with timeout 10000ms
-      - waiting for getByText(/required/)
+      - waiting for locator('input[type="email"]')
 
 
-      518 |       
-      519 |       // Should show validation errors
-    > 520 |       await expect(page.getByText(/required/)).toBeVisible();
-          |                                                ^
-      521 |     });
-      522 |
-      523 |     test('should handle network errors gracefully', async ({ page }) => {
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:520:48
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-5d383-andle-empty-form-submission-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-a7978-ebook-API-errors-gracefully-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-5d383-andle-empty-form-submission-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-5d383-andle-empty-form-submission-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-5d383-andle-empty-form-submission-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-5d383-andle-empty-form-submission-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-5d383-andle-empty-form-submission-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-a7978-ebook-API-errors-gracefully-chromium/test-failed-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="PubHub Comprehensive Test Suite › Error Handling › should handle network errors gracefully" classname="comprehensive-test-suite.spec.ts" time="0.326">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Performance › should load sign-in page quickly" classname="comprehensive-test-suite.spec.ts" time="0.248">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Performance › should load dashboard quickly after authentication" classname="comprehensive-test-suite.spec.ts" time="30.663">
-<failure message="comprehensive-test-suite.spec.ts:547:5 should load dashboard quickly after authentication" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:547:5 › PubHub Comprehensive Test Suite › Performance › should load dashboard quickly after authentication 
+<testcase name="Facebook Integration › should have responsive design for Facebook pages" classname="facebook-integration.spec.ts" time="30.069">
+<failure message="facebook-integration.spec.ts:161:3 should have responsive design for Facebook pages" type="FAILURE">
+<![CDATA[  [chromium] › facebook-integration.spec.ts:161:3 › Facebook Integration › should have responsive design for Facebook pages 
 
-    Test timeout of 30000ms exceeded.
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
 
-    Error: page.waitForURL: Test timeout of 30000ms exceeded.
-    =========================== logs ===========================
-    waiting for navigation to "http://localhost:8082/" until "load"
-    ============================================================
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
 
-      553 |       
-      554 |       const startTime = Date.now();
-    > 555 |       await page.waitForURL('http://localhost:8082/');
-          |                  ^
-      556 |       const loadTime = Date.now() - startTime;
-      557 |       
-      558 |       // Should load within 3 seconds
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:555:18
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-903ee-uickly-after-authentication-chromium/test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-903ee-uickly-after-authentication-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-903ee-uickly-after-authentication-chromium/error-context.md
-]]>
-</failure>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-903ee-uickly-after-authentication-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-903ee-uickly-after-authentication-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-903ee-uickly-after-authentication-chromium/error-context.md]]
-]]>
-</system-out>
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Accessibility › should have proper ARIA labels" classname="comprehensive-test-suite.spec.ts" time="0.33">
-</testcase>
-<testcase name="PubHub Comprehensive Test Suite › Accessibility › should be keyboard navigable" classname="comprehensive-test-suite.spec.ts" time="10.644">
-<failure message="comprehensive-test-suite.spec.ts:580:5 should be keyboard navigable" type="FAILURE">
-<![CDATA[  [chromium] › comprehensive-test-suite.spec.ts:580:5 › PubHub Comprehensive Test Suite › Accessibility › should be keyboard navigable 
-
-    Error: Timed out 10000ms waiting for expect(locator).toBeFocused()
-
-    Locator: locator('button[type="submit"]')
-    Expected: focused
-    Received: inactive
+    Error: page.fill: Target page, context or browser has been closed
     Call log:
-      - Expect "toBeFocused" with timeout 10000ms
-      - waiting for locator('button[type="submit"]')
-        14 × locator resolved to <button type="submit" data-lov-name="Button" data-component-line="141" data-component-name="Button" data-component-file="SignIn.tsx" data-lov-id="src/pages/auth/SignIn.tsx:141:14" data-component-path="src/pages/auth/SignIn.tsx" data-component-content="%7B%22text%22%3A%22Sign%20in%22%2C%22className%22%3A%22w-full%22%7D" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:r…>Sign in</button>
-           - unexpected value "inactive"
+      - waiting for locator('input[type="email"]')
 
 
-      589 |       
-      590 |       await page.keyboard.press('Tab');
-    > 591 |       await expect(page.locator('button[type="submit"]')).toBeFocused();
-          |                                                           ^
-      592 |     });
-      593 |   });
-      594 | }); 
-        at /home/noob/PubHub/tests/comprehensive-test-suite.spec.ts:591:59
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-a4af7-hould-be-keyboard-navigable-chromium/test-failed-1.png
+    ../test-results/facebook-integration-Faceb-b3390-e-design-for-Facebook-pages-chromium/test-failed-1.png
     ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ../test-results/comprehensive-test-suite-P-a4af7-hould-be-keyboard-navigable-chromium/video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ../test-results/comprehensive-test-suite-P-a4af7-hould-be-keyboard-navigable-chromium/error-context.md
 ]]>
 </failure>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|comprehensive-test-suite-P-a4af7-hould-be-keyboard-navigable-chromium/test-failed-1.png]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-a4af7-hould-be-keyboard-navigable-chromium/video.webm]]
-
-[[ATTACHMENT|comprehensive-test-suite-P-a4af7-hould-be-keyboard-navigable-chromium/error-context.md]]
+[[ATTACHMENT|facebook-integration-Faceb-b3390-e-design-for-Facebook-pages-chromium/test-failed-1.png]]
 ]]>
 </system-out>
+</testcase>
+</testsuite>
+<testsuite name="facebook-integration.spec.ts" timestamp="2025-07-31T11:55:52.480Z" hostname="firefox" tests="10" failures="10" skipped="0" time="300.361" errors="0">
+<testcase name="Facebook Integration › should display Facebook integration page" classname="facebook-integration.spec.ts" time="30.038">
+<failure message="facebook-integration.spec.ts:26:3 should display Facebook integration page" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:26:3 › Facebook Integration › should display Facebook integration page 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-16504-y-Facebook-integration-page-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-16504-y-Facebook-integration-page-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should show configuration error when Facebook is not configured" classname="facebook-integration.spec.ts" time="30.033">
+<failure message="facebook-integration.spec.ts:38:3 should show configuration error when Facebook is not configured" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:38:3 › Facebook Integration › should show configuration error when Facebook is not configured 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-38097--Facebook-is-not-configured-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-38097--Facebook-is-not-configured-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should navigate to Facebook connect page" classname="facebook-integration.spec.ts" time="30.04">
+<failure message="facebook-integration.spec.ts:53:3 should navigate to Facebook connect page" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:53:3 › Facebook Integration › should navigate to Facebook connect page 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-697aa-te-to-Facebook-connect-page-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-697aa-te-to-Facebook-connect-page-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should handle OAuth callback flow" classname="facebook-integration.spec.ts" time="30.045">
+<failure message="facebook-integration.spec.ts:64:3 should handle OAuth callback flow" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:64:3 › Facebook Integration › should handle OAuth callback flow 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-0c032--handle-OAuth-callback-flow-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-0c032--handle-OAuth-callback-flow-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should display empty state when no Facebook accounts connected" classname="facebook-integration.spec.ts" time="30.033">
+<failure message="facebook-integration.spec.ts:76:3 should display empty state when no Facebook accounts connected" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:76:3 › Facebook Integration › should display empty state when no Facebook accounts connected 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-abdef-Facebook-accounts-connected-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-abdef-Facebook-accounts-connected-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should validate Facebook client configuration methods" classname="facebook-integration.spec.ts" time="30.045">
+<failure message="facebook-integration.spec.ts:84:3 should validate Facebook client configuration methods" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:84:3 › Facebook Integration › should validate Facebook client configuration methods 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-cf43b-lient-configuration-methods-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-cf43b-lient-configuration-methods-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should have proper routing for Facebook pages" classname="facebook-integration.spec.ts" time="30.031">
+<failure message="facebook-integration.spec.ts:113:3 should have proper routing for Facebook pages" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:113:3 › Facebook Integration › should have proper routing for Facebook pages 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-362fe--routing-for-Facebook-pages-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-362fe--routing-for-Facebook-pages-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should display Facebook integration in navigation or dashboard" classname="facebook-integration.spec.ts" time="30.03">
+<failure message="facebook-integration.spec.ts:127:3 should display Facebook integration in navigation or dashboard" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:127:3 › Facebook Integration › should display Facebook integration in navigation or dashboard 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-5986e--in-navigation-or-dashboard-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-5986e--in-navigation-or-dashboard-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should handle Facebook API errors gracefully" classname="facebook-integration.spec.ts" time="30.035">
+<failure message="facebook-integration.spec.ts:139:3 should handle Facebook API errors gracefully" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:139:3 › Facebook Integration › should handle Facebook API errors gracefully 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-a7978-ebook-API-errors-gracefully-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-a7978-ebook-API-errors-gracefully-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should have responsive design for Facebook pages" classname="facebook-integration.spec.ts" time="30.031">
+<failure message="facebook-integration.spec.ts:161:3 should have responsive design for Facebook pages" type="FAILURE">
+<![CDATA[  [firefox] › facebook-integration.spec.ts:161:3 › Facebook Integration › should have responsive design for Facebook pages 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-b3390-e-design-for-Facebook-pages-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-b3390-e-design-for-Facebook-pages-firefox/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="facebook-integration.spec.ts" timestamp="2025-07-31T11:55:52.480Z" hostname="webkit" tests="10" failures="7" skipped="3" time="220.356" errors="0">
+<testcase name="Facebook Integration › should display Facebook integration page" classname="facebook-integration.spec.ts" time="30.127">
+<failure message="facebook-integration.spec.ts:26:3 should display Facebook integration page" type="FAILURE">
+<![CDATA[  [webkit] › facebook-integration.spec.ts:26:3 › Facebook Integration › should display Facebook integration page 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-16504-y-Facebook-integration-page-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-16504-y-Facebook-integration-page-webkit/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should show configuration error when Facebook is not configured" classname="facebook-integration.spec.ts" time="30.13">
+<failure message="facebook-integration.spec.ts:38:3 should show configuration error when Facebook is not configured" type="FAILURE">
+<![CDATA[  [webkit] › facebook-integration.spec.ts:38:3 › Facebook Integration › should show configuration error when Facebook is not configured 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-38097--Facebook-is-not-configured-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-38097--Facebook-is-not-configured-webkit/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should navigate to Facebook connect page" classname="facebook-integration.spec.ts" time="30.122">
+<failure message="facebook-integration.spec.ts:53:3 should navigate to Facebook connect page" type="FAILURE">
+<![CDATA[  [webkit] › facebook-integration.spec.ts:53:3 › Facebook Integration › should navigate to Facebook connect page 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-697aa-te-to-Facebook-connect-page-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-697aa-te-to-Facebook-connect-page-webkit/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should handle OAuth callback flow" classname="facebook-integration.spec.ts" time="30.165">
+<failure message="facebook-integration.spec.ts:64:3 should handle OAuth callback flow" type="FAILURE">
+<![CDATA[  [webkit] › facebook-integration.spec.ts:64:3 › Facebook Integration › should handle OAuth callback flow 
+
+    Test timeout of 30000ms exceeded while running "beforeEach" hook.
+
+      4 |   let page: Page;
+      5 |
+    > 6 |   test.beforeEach(async ({ browser }) => {
+        |        ^
+      7 |     page = await browser.newPage();
+      8 |     
+      9 |     // Navigate to sign in page
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:6:8
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/facebook-integration-Faceb-0c032--handle-OAuth-callback-flow-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|facebook-integration-Faceb-0c032--handle-OAuth-callback-flow-webkit/test-failed-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Facebook Integration › should display empty state when no Facebook accounts connected" classname="facebook-integration.spec.ts" time="23.264">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should validate Facebook client configuration methods" classname="facebook-integration.spec.ts" time="22.983">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should have proper routing for Facebook pages" classname="facebook-integration.spec.ts" time="22.116">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should display Facebook integration in navigation or dashboard" classname="facebook-integration.spec.ts" time="11.83">
+<failure message="facebook-integration.spec.ts:127:3 should display Facebook integration in navigation or dashboard" type="FAILURE">
+<![CDATA[  [webkit] › facebook-integration.spec.ts:127:3 › Facebook Integration › should display Facebook integration in navigation or dashboard 
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+]]>
+</failure>
+</testcase>
+<testcase name="Facebook Integration › should handle Facebook API errors gracefully" classname="facebook-integration.spec.ts" time="10.329">
+<failure message="facebook-integration.spec.ts:139:3 should handle Facebook API errors gracefully" type="FAILURE">
+<![CDATA[  [webkit] › facebook-integration.spec.ts:139:3 › Facebook Integration › should handle Facebook API errors gracefully 
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+]]>
+</failure>
+</testcase>
+<testcase name="Facebook Integration › should have responsive design for Facebook pages" classname="facebook-integration.spec.ts" time="9.29">
+<failure message="facebook-integration.spec.ts:161:3 should have responsive design for Facebook pages" type="FAILURE">
+<![CDATA[  [webkit] › facebook-integration.spec.ts:161:3 › Facebook Integration › should have responsive design for Facebook pages 
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="facebook-integration.spec.ts" timestamp="2025-07-31T11:55:52.480Z" hostname="Mobile Chrome" tests="10" failures="4" skipped="6" time="70.1" errors="0">
+<testcase name="Facebook Integration › should display Facebook integration page" classname="facebook-integration.spec.ts" time="20.684">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should show configuration error when Facebook is not configured" classname="facebook-integration.spec.ts" time="20.259">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should navigate to Facebook connect page" classname="facebook-integration.spec.ts" time="8.714">
+<failure message="facebook-integration.spec.ts:53:3 should navigate to Facebook connect page" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › facebook-integration.spec.ts:53:3 › Facebook Integration › should navigate to Facebook connect page 
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+]]>
+</failure>
+</testcase>
+<testcase name="Facebook Integration › should handle OAuth callback flow" classname="facebook-integration.spec.ts" time="7.77">
+<failure message="facebook-integration.spec.ts:64:3 should handle OAuth callback flow" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › facebook-integration.spec.ts:64:3 › Facebook Integration › should handle OAuth callback flow 
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+]]>
+</failure>
+</testcase>
+<testcase name="Facebook Integration › should display empty state when no Facebook accounts connected" classname="facebook-integration.spec.ts" time="5.452">
+<failure message="facebook-integration.spec.ts:76:3 should display empty state when no Facebook accounts connected" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › facebook-integration.spec.ts:76:3 › Facebook Integration › should display empty state when no Facebook accounts connected 
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+]]>
+</failure>
+</testcase>
+<testcase name="Facebook Integration › should validate Facebook client configuration methods" classname="facebook-integration.spec.ts" time="0.37">
+<failure message="facebook-integration.spec.ts:84:3 should validate Facebook client configuration methods" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › facebook-integration.spec.ts:84:3 › Facebook Integration › should validate Facebook client configuration methods 
+
+    Error: page.fill: Target page, context or browser has been closed
+    Call log:
+      - waiting for locator('input[type="email"]')
+
+
+      11 |     
+      12 |     // Sign in with test credentials
+    > 13 |     await page.fill('input[type="email"]', 'test@user.com');
+         |                ^
+      14 |     await page.fill('input[type="password"]', 'testpassword');
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+        at /home/noob/PubHub/tests/facebook-integration.spec.ts:13:16
+]]>
+</failure>
+</testcase>
+<testcase name="Facebook Integration › should have proper routing for Facebook pages" classname="facebook-integration.spec.ts" time="2.638">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should display Facebook integration in navigation or dashboard" classname="facebook-integration.spec.ts" time="2.197">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should handle Facebook API errors gracefully" classname="facebook-integration.spec.ts" time="2.016">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should have responsive design for Facebook pages" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="facebook-integration.spec.ts" timestamp="2025-07-31T11:55:52.480Z" hostname="Mobile Safari" tests="10" failures="0" skipped="10" time="0" errors="0">
+<testcase name="Facebook Integration › should display Facebook integration page" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should show configuration error when Facebook is not configured" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should navigate to Facebook connect page" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should handle OAuth callback flow" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should display empty state when no Facebook accounts connected" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should validate Facebook client configuration methods" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should have proper routing for Facebook pages" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should display Facebook integration in navigation or dashboard" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should handle Facebook API errors gracefully" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Facebook Integration › should have responsive design for Facebook pages" classname="facebook-integration.spec.ts" time="0">
+<skipped>
+</skipped>
 </testcase>
 </testsuite>
 </testsuites>

@@ -59,7 +59,8 @@ const channels = [
       scheduledPosts: 3,
       engagement: '6.1%'
     },
-    status: 'connected' as const
+    status: 'connected' as const,
+    route: '/linkedin'
   },
   {
     id: 'twitter',
