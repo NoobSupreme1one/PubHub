@@ -14,13 +14,164 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      facebook_tokens: {
+        Row: {
+          id: string
+          user_id: string
+          access_token: string
+          expires_at: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          access_token: string
+          expires_at: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          access_token?: string
+          expires_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      facebook_pages: {
+        Row: {
+          id: string
+          user_id: string
+          page_id: string
+          page_name: string
+          access_token: string
+          category: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          page_id: string
+          page_name: string
+          access_token: string
+          category?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          page_id?: string
+          page_name?: string
+          access_token?: string
+          category?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      facebook_posts: {
+        Row: {
+          id: string
+          user_id: string
+          page_id: string
+          facebook_post_id: string
+          message: string | null
+          link: string | null
+          picture: string | null
+          status_type: string | null
+          scheduled_publish_time: string | null
+          published_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          page_id: string
+          facebook_post_id: string
+          message?: string | null
+          link?: string | null
+          picture?: string | null
+          status_type?: string | null
+          scheduled_publish_time?: string | null
+          published_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          page_id?: string
+          facebook_post_id?: string
+          message?: string | null
+          link?: string | null
+          picture?: string | null
+          status_type?: string | null
+          scheduled_publish_time?: string | null
+          published_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      facebook_post_analytics: {
+        Row: {
+          id: string
+          post_id: string
+          likes_count: number
+          comments_count: number
+          shares_count: number
+          reach: number
+          impressions: number
+          engagement_rate: number
+          last_updated: string
+        }
+        Insert: {
+          id?: string
+          post_id: string
+          likes_count?: number
+          comments_count?: number
+          shares_count?: number
+          reach?: number
+          impressions?: number
+          engagement_rate?: number
+          last_updated?: string
+        }
+        Update: {
+          id?: string
+          post_id?: string
+          likes_count?: number
+          comments_count?: number
+          shares_count?: number
+          reach?: number
+          impressions?: number
+          engagement_rate?: number
+          last_updated?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "facebook_post_analytics_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: true
+            referencedRelation: "facebook_posts"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cleanup_expired_facebook_tokens: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
