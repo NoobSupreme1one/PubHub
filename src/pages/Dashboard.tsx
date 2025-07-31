@@ -2,107 +2,88 @@ import { DashboardHeader } from "@/components/dashboard/DashboardHeader"
 import { ChannelCard } from "@/components/dashboard/ChannelCard"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  Globe, 
-  Facebook, 
-  Linkedin, 
-  Twitter, 
-  Instagram, 
+import {
+  Globe,
+  Facebook,
+  Linkedin,
+  Twitter,
+  Instagram,
   Zap,
   TrendingUp,
   Users,
   Calendar,
-  BarChart3
+  BarChart3,
+  Loader2
 } from "lucide-react"
+import { useChannels } from "@/hooks/use-channels"
 
-const channels = [
-  {
-    id: 'blog',
-    name: 'Company Blog',
-    platform: 'WordPress',
-    icon: <Globe className="h-5 w-5" style={{ color: '#1976D2' }} />,
-    color: '#1976D2',
-    stats: {
-      followers: '2.4K',
-      scheduledPosts: 5,
-      engagement: '4.2%'
-    },
-    status: 'connected' as const
-  },
-  {
-    id: 'facebook',
-    name: 'Facebook Page',
-    platform: 'Meta Business',
-    icon: <Facebook className="h-5 w-5" style={{ color: '#1877F2' }} />,
-    color: '#1877F2',
-    stats: {
-      followers: '12.5K',
-      scheduledPosts: 8,
-      engagement: '3.8%'
-    },
-    status: 'connected' as const
-  },
-  {
-    id: 'linkedin',
-    name: 'LinkedIn Company',
-    platform: 'LinkedIn Business',
-    icon: <Linkedin className="h-5 w-5" style={{ color: '#0A66C2' }} />,
-    color: '#0A66C2',
-    stats: {
-      followers: '8.9K',
-      scheduledPosts: 3,
-      engagement: '6.1%'
-    },
-    status: 'connected' as const
-  },
-  {
-    id: 'twitter',
-    name: 'X (Twitter)',
-    platform: 'X Corp',
-    icon: <Twitter className="h-5 w-5" style={{ color: '#000000' }} />,
-    color: '#000000',
-    stats: {
-      followers: '15.2K',
-      scheduledPosts: 12,
-      engagement: '2.9%'
-    },
-    status: 'error' as const
-  },
-  {
-    id: 'instagram',
-    name: 'Instagram Business',
-    platform: 'Meta Business',
-    icon: <Instagram className="h-5 w-5" style={{ color: '#E4405F' }} />,
-    color: '#E4405F',
-    stats: {
-      followers: '6.7K',
-      scheduledPosts: 6,
-      engagement: '5.4%'
-    },
-    status: 'connected' as const
-  },
-  {
-    id: 'pinterest',
-    name: 'Pinterest Business',
-    platform: 'Pinterest',
-    icon: <Zap className="h-5 w-5" style={{ color: '#BD081C' }} />,
-    color: '#BD081C',
-    stats: {
-      followers: '3.1K',
-      scheduledPosts: 2,
-      engagement: '7.2%'
-    },
-    status: 'disconnected' as const
+const getChannelIcon = (id: string, color: string) => {
+  const iconProps = { className: "h-5 w-5", style: { color } };
+
+  switch (id.split('-')[0]) {
+    case 'blog':
+      return <Globe {...iconProps} />;
+    case 'facebook':
+      return <Facebook {...iconProps} />;
+    case 'linkedin':
+      return <Linkedin {...iconProps} />;
+    case 'twitter':
+      return <Twitter {...iconProps} />;
+    case 'instagram':
+      return <Instagram {...iconProps} />;
+    case 'pinterest':
+      return <Zap {...iconProps} />;
+    default:
+      return <Globe {...iconProps} />;
   }
-]
+};
 
 const Dashboard = () => {
-  const totalFollowers = channels.reduce((acc, channel) => {
+  const { data: channels, isLoading, error } = useChannels();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <DashboardHeader />
+        <main className="container mx-auto px-6 py-8">
+          <div className="flex items-center justify-center py-12">
+            <div className="text-center">
+              <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-primary" />
+              <p className="text-muted-foreground">Loading your channels...</p>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background">
+        <DashboardHeader />
+        <main className="container mx-auto px-6 py-8">
+          <div className="flex items-center justify-center py-12">
+            <div className="text-center">
+              <p className="text-destructive mb-2">Failed to load channels</p>
+              <p className="text-muted-foreground text-sm">{error.message}</p>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  const channelsWithIcons = channels?.map(channel => ({
+    ...channel,
+    icon: getChannelIcon(channel.id, channel.color)
+  })) || [];
+
+  const totalFollowers = channelsWithIcons.reduce((acc, channel) => {
     const followers = parseFloat(channel.stats.followers.replace('K', '')) * 1000
     return acc + followers
   }, 0)
 
-  const totalScheduled = channels.reduce((acc, channel) => acc + channel.stats.scheduledPosts, 0)
+  const totalScheduled = channelsWithIcons.reduce((acc, channel) => acc + channel.stats.scheduledPosts, 0)
 
   return (
     <div className="min-h-screen bg-background">
@@ -166,15 +147,15 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-foreground">
-                {channels.filter(c => c.status === 'connected').length}
+                {channelsWithIcons.filter(c => c.status === 'connected').length}
               </div>
               <div className="flex gap-1 mt-2">
                 <Badge className="bg-success text-success-foreground text-xs">
-                  {channels.filter(c => c.status === 'connected').length} Connected
+                  {channelsWithIcons.filter(c => c.status === 'connected').length} Connected
                 </Badge>
-                {channels.filter(c => c.status === 'error').length > 0 && (
+                {channelsWithIcons.filter(c => c.status === 'error').length > 0 && (
                   <Badge className="bg-destructive text-destructive-foreground text-xs">
-                    {channels.filter(c => c.status === 'error').length} Error
+                    {channelsWithIcons.filter(c => c.status === 'error').length} Error
                   </Badge>
                 )}
               </div>
@@ -187,12 +168,12 @@ const Dashboard = () => {
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold text-foreground">Content Channels</h2>
             <Badge className="bg-accent text-accent-foreground">
-              {channels.length} Platforms
+              {channelsWithIcons.length} Platforms
             </Badge>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {channels.map((channel) => (
+            {channelsWithIcons.map((channel) => (
               <ChannelCard key={channel.id} channel={channel} />
             ))}
           </div>
