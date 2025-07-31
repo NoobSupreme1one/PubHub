@@ -34,3 +34,4 @@ dist-ssr
 # Task files
 # tasks.json
 # tasks/
+.vercel
