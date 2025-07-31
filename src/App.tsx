@@ -43,6 +43,7 @@ const App = () => (
             <Route path="/signup" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/auth/callback" element={<OAuthCallback />} />
+            <Route path="/auth/v1/callback" element={<OAuthCallback />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             

@@ -9,6 +9,7 @@ interface AuthContextType extends AuthState {
   signUp: (email: string, password: string, fullName?: string) => Promise<{ error: string | null }>
   signIn: (email: string, password: string) => Promise<{ error: string | null }>
   signInWithOAuth: (provider: 'google' | 'github' | 'facebook') => Promise<{ error: string | null }>
+  handleOAuthCallback: () => Promise<{ user: User | null; error: string | null }>
   signOut: () => Promise<{ error: string | null }>
   resetPassword: (email: string) => Promise<{ error: string | null }>
   updatePassword: (newPassword: string) => Promise<{ error: string | null }>
@@ -189,6 +190,37 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  // Handle OAuth callback
+  const handleOAuthCallback = async () => {
+    try {
+      setAuthState(prev => ({ ...prev, loading: true, error: null }))
+      
+      const { user, error } = await authService.handleOAuthCallback()
+      
+      if (error) {
+        setAuthState(prev => ({ ...prev, loading: false, error }))
+        return { user: null, error }
+      }
+
+      if (user) {
+        setAuthState(prev => ({
+          ...prev,
+          user,
+          loading: false,
+          error: null
+        }))
+        
+        await loadUserProfile(user.id)
+      }
+
+      return { user, error: null }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'OAuth callback failed'
+      setAuthState(prev => ({ ...prev, loading: false, error: errorMessage }))
+      return { user: null, error: errorMessage }
+    }
+  }
+
   // Sign out function
   const signOut = async () => {
     try {
@@ -281,6 +313,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     signUp,
     signIn,
     signInWithOAuth,
+    handleOAuthCallback,
     signOut,
     resetPassword,
     updatePassword,

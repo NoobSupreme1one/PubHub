@@ -9,20 +9,26 @@ import {
   Loader2,
   CheckCircle,
   AlertCircle,
-  ArrowRight
+  ArrowRight,
+  Check,
+  LogOut
 } from 'lucide-react'
 
 export const Icons = {
   github: Github,
+  gitHub: Github, // Alias for consistency
   mail: Mail,
   lock: Lock,
   user: User,
   eye: Eye,
   eyeOff: EyeOff,
   loader: Loader2,
+  spinner: Loader2, // Alias for consistency
   checkCircle: CheckCircle,
+  check: Check,
   alertCircle: AlertCircle,
   arrowRight: ArrowRight,
+  logOut: LogOut,
   google: ({ ...props }: LucideProps) => (
     <svg role="img" viewBox="0 0 24 24" {...props}>
       <path
