@@ -10,6 +10,9 @@ import CampaignForm from "./pages/CampaignForm";
 import CampaignDetail from "./pages/CampaignDetail";
 import CampaignSchedule from "./pages/CampaignSchedule";
 import Templates from "./pages/Templates";
+import WordPress from "./pages/WordPress";
+import WordPressConnect from "./pages/WordPressConnect";
+import WordPressGenerate from "./pages/WordPressGenerate";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
@@ -35,6 +38,11 @@ const App = () => (
           
           {/* Template Routes */}
           <Route path="/templates" element={<Templates />} />
+          
+          {/* WordPress Routes */}
+          <Route path="/wordpress" element={<WordPress />} />
+          <Route path="/wordpress/connect" element={<WordPressConnect />} />
+          <Route path="/wordpress/generate" element={<WordPressGenerate />} />
           
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />

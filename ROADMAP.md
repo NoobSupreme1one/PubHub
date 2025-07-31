@@ -52,42 +52,54 @@
 
 ### **Phase 3: Platform Integration & Channel Management (Weeks 5-7)**
 
-#### **Task 3.1: Facebook Integration**
+### ** Task 3.1 Wordpress Blog Integration
+- [x] Set up wordpress credentials setup.
+- [x] Create AI workflow for analyzing content on the blog and creating a niche profile.
+- [x] Build blog article generation workflow using Google Gemini API/Perplexity
+         -Article topic generation based on niche profile and previous articles in category.
+         -Research article topic using perplexity AI
+         -Generate Complete SEO best practices article with featured image.
+- [x] Build blog article scheduling
+         -Schedule posts anywhere from once an hour, to once a year
+         -ability to create seperate posting schedules for each category.
+
+
+#### **Task 3.2: Facebook Integration**
 - [ ] Set up Facebook Graph API integration
 - [ ] Implement OAuth2 authentication flow
 - [ ] Create Facebook page/profile connection
 - [ ] Build Facebook publishing capabilities
 - [ ] Add Facebook content validation
 
-#### **Task 3.2: LinkedIn Integration**
+#### **Task 3.3: LinkedIn Integration**
 - [ ] Set up LinkedIn Marketing API integration
 - [ ] Implement LinkedIn OAuth flow
 - [ ] Create company page connection
 - [ ] Build LinkedIn publishing features
 - [ ] Add LinkedIn content optimization
 
-#### **Task 3.3: Twitter/X Integration**
+#### **Task 3.4: Twitter/X Integration**
 - [ ] Set up Twitter API v2 integration
 - [ ] Implement Twitter OAuth flow
 - [ ] Create Twitter account connection
 - [ ] Build tweet publishing capabilities
 - [ ] Add Twitter thread generation
 
-#### **Task 3.4: Instagram Integration**
+#### **Task 3.5: Instagram Integration**
 - [ ] Set up Instagram Business API via Facebook
 - [ ] Implement Instagram authentication
 - [ ] Create Instagram account connection
 - [ ] Build Instagram post publishing
 - [ ] Add Instagram story capabilities
 
-#### **Task 3.5: Pinterest Integration**
+#### **Task 3.6: Pinterest Integration**
 - [ ] Set up Pinterest API integration
 - [ ] Implement Pinterest OAuth flow
 - [ ] Create Pinterest board connection
 - [ ] Build pin creation capabilities
 - [ ] Add Pinterest SEO optimization
 
-#### **Task 3.6: Channel Management System**
+#### **Task 3.7: Channel Management System**
 - [ ] Create channel connection interface
 - [ ] Implement channel status monitoring
 - [ ] Build channel analytics dashboard

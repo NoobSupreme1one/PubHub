@@ -246,6 +246,148 @@ export function useDeleteTemplate() {
   )
 }
 
+// WordPress hooks
+export function useWordPressSites(userId: string, options?: UseApiOptions<any[]>) {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  
+  return useApiQuery(
+    ['wordpress-sites', userId],
+    () => wordpressService.getSites(userId),
+    options
+  )
+}
+
+export function useWordPressSite(siteId: string, options?: UseApiOptions<any>) {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  
+  return useApiQuery(
+    ['wordpress-site', siteId],
+    () => wordpressService.getSiteById(siteId),
+    {
+      enabled: !!siteId,
+      ...options
+    }
+  )
+}
+
+export function useConnectWordPressSite() {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  const queryClient = useQueryClient()
+  
+  return useApiMutation(
+    (credentials: any) => wordpressService.connectSite(credentials),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['wordpress-sites'] })
+      }
+    }
+  )
+}
+
+export function useSyncWordPressSite() {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  const queryClient = useQueryClient()
+  
+  return useApiMutation(
+    (siteId: string) => wordpressService.syncSite(siteId),
+    {
+      onSuccess: (_, siteId) => {
+        queryClient.invalidateQueries({ queryKey: ['wordpress-site', siteId] })
+        queryClient.invalidateQueries({ queryKey: ['wordpress-sites'] })
+      }
+    }
+  )
+}
+
+export function useNicheProfiles(userId: string, options?: UseApiOptions<any[]>) {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  
+  return useApiQuery(
+    ['niche-profiles', userId],
+    () => wordpressService.getNicheProfiles(userId),
+    options
+  )
+}
+
+export function useAnalyzeNiche() {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  const queryClient = useQueryClient()
+  
+  return useApiMutation(
+    (siteId: string) => wordpressService.analyzeContentForNiche(siteId),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['niche-profiles'] })
+      }
+    }
+  )
+}
+
+export function useGenerateArticle() {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  
+  return useApiMutation(
+    (request: any) => wordpressService.generateArticle(request)
+  )
+}
+
+export function useArticleSchedules(userId: string, options?: UseApiOptions<any[]>) {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  
+  return useApiQuery(
+    ['article-schedules', userId],
+    () => wordpressService.getArticleSchedules(userId),
+    options
+  )
+}
+
+export function useCreateArticleSchedule() {
+  const { wordpressService } = require('@/lib/api/wordpress')
+  const queryClient = useQueryClient()
+  
+  return useApiMutation(
+    (data: any) => wordpressService.createArticleSchedule(data),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['article-schedules'] })
+      }
+    }
+  )
+}
+
+// AI hooks
+export function useAIAnalysis() {
+  const { aiService } = require('@/lib/api/ai')
+  
+  return useApiMutation(
+    (request: any) => aiService.analyzeContent(request)
+  )
+}
+
+export function useAIGenerateArticle() {
+  const { aiService } = require('@/lib/api/ai')
+  
+  return useApiMutation(
+    (request: any) => aiService.generateArticle(request)
+  )
+}
+
+export function useAIGenerateTopics() {
+  const { aiService } = require('@/lib/api/ai')
+  
+  return useApiMutation(
+    (request: any) => aiService.generateTopics(request)
+  )
+}
+
+export function useAIResearch() {
+  const { aiService } = require('@/lib/api/ai')
+  
+  return useApiMutation(
+    (query: string) => aiService.researchTopic(query)
+  )
+}
+
 // Channel hooks
 export function useChannels(userId: string, options?: UseApiOptions<any[]>) {
   const { channelService } = require('@/lib/api/channels')

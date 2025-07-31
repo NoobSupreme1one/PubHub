@@ -16,7 +16,8 @@ import {
   BarChart3,
   Target,
   FileText,
-  Plus
+  Plus,
+  Brain
 } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
@@ -202,6 +203,13 @@ const Dashboard = () => {
                 Templates
               </Button>
               <Button
+                variant="outline"
+                onClick={() => navigate('/wordpress')}
+              >
+                <Brain className="w-4 h-4 mr-2" />
+                WordPress
+              </Button>
+              <Button
                 onClick={() => navigate('/campaigns/new')}
               >
                 <Plus className="w-4 h-4 mr-2" />
@@ -237,16 +245,79 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/campaigns/new')}>
+            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/wordpress')}>
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                  <Plus className="h-4 w-4" />
-                  Quick Start
+                  <Brain className="h-4 w-4" />
+                  WordPress AI
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground">AI</div>
+                <p className="text-xs text-muted-foreground mt-1">Content generation</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+        
+        {/* WordPress Management */}
+        <div className="space-y-6 mb-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-3xl font-bold text-foreground">WordPress Management</h2>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => navigate('/wordpress/connect')}
+              >
+                <Plus className="w-4 h-4 mr-2" />
+                Connect Site
+              </Button>
+              <Button
+                onClick={() => navigate('/wordpress/generate')}
+              >
+                <Brain className="w-4 h-4 mr-2" />
+                Generate Article
+              </Button>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/wordpress')}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <Globe className="h-4 w-4" />
+                  Connected Sites
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground">0</div>
+                <p className="text-xs text-muted-foreground mt-1">WordPress sites</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/wordpress')}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <Brain className="h-4 w-4" />
+                  Niche Profiles
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground">0</div>
+                <p className="text-xs text-muted-foreground mt-1">AI-analyzed niches</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/wordpress/generate')}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <FileText className="h-4 w-4" />
+                  Quick Generate
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-foreground">New</div>
-                <p className="text-xs text-muted-foreground mt-1">Create campaign</p>
+                <p className="text-xs text-muted-foreground mt-1">Generate article</p>
               </CardContent>
             </Card>
           </div>
