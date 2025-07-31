@@ -2,18 +2,29 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Bell, Plus, Search, Settings, User } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { useEffect, useState } from "react"
+import { processLogoBackground } from "@/utils/processLogo"
+import pubhubLogo from "@/assets/pubhub-logo.png"
 
 export function DashboardHeader() {
+  const [logoSrc, setLogoSrc] = useState(pubhubLogo);
+
+  useEffect(() => {
+    processLogoBackground().then(setLogoSrc);
+  }, []);
+
   return (
     <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-primary-foreground rounded-sm"></div>
-              </div>
-              <h1 className="text-2xl font-bold text-foreground">ContentStudio</h1>
+              <img 
+                src={logoSrc} 
+                alt="PubHub" 
+                className="w-8 h-8 object-contain"
+              />
+              <h1 className="text-2xl font-bold text-foreground">PubHub</h1>
             </div>
             
             <div className="relative max-w-md w-full">
