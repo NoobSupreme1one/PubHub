@@ -2,6 +2,7 @@ import { DashboardHeader } from "@/components/dashboard/DashboardHeader"
 import { ChannelCard } from "@/components/dashboard/ChannelCard"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { 
   Globe, 
   Facebook, 
@@ -12,8 +13,12 @@ import {
   TrendingUp,
   Users,
   Calendar,
-  BarChart3
+  BarChart3,
+  Target,
+  FileText,
+  Plus
 } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 const channels = [
   {
@@ -97,6 +102,8 @@ const channels = [
 ]
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+  
   const totalFollowers = channels.reduce((acc, channel) => {
     const followers = parseFloat(channel.stats.followers.replace('K', '')) * 1000
     return acc + followers
@@ -180,6 +187,69 @@ const Dashboard = () => {
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Campaign Management */}
+        <div className="space-y-6 mb-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-3xl font-bold text-foreground">Campaign Management</h2>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => navigate('/templates')}
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Templates
+              </Button>
+              <Button
+                onClick={() => navigate('/campaigns/new')}
+              >
+                <Plus className="w-4 h-4 mr-2" />
+                Create Campaign
+              </Button>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/campaigns')}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <Target className="h-4 w-4" />
+                  Active Campaigns
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground">0</div>
+                <p className="text-xs text-muted-foreground mt-1">Manage your campaigns</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/templates')}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <FileText className="h-4 w-4" />
+                  Templates
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground">3</div>
+                <p className="text-xs text-muted-foreground mt-1">Pre-built templates</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card shadow-material-md border-0 hover:shadow-material-lg transition-shadow cursor-pointer" onClick={() => navigate('/campaigns/new')}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                  <Plus className="h-4 w-4" />
+                  Quick Start
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground">New</div>
+                <p className="text-xs text-muted-foreground mt-1">Create campaign</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Channels Grid */}

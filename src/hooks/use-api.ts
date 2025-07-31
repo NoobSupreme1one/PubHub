@@ -113,6 +113,19 @@ export function useCampaign(campaignId: string, options?: UseApiOptions<any>) {
   )
 }
 
+export function useCampaignWithDetails(campaignId: string, options?: UseApiOptions<any>) {
+  const { campaignService } = require('@/lib/api/campaigns')
+  
+  return useApiQuery(
+    ['campaign-with-details', campaignId],
+    () => campaignService.getCampaignWithDetails(campaignId),
+    {
+      enabled: !!campaignId,
+      ...options
+    }
+  )
+}
+
 export function useCampaignStats(userId: string, options?: UseApiOptions<any>) {
   const { campaignService } = require('@/lib/api/campaigns')
   
@@ -161,6 +174,73 @@ export function useDeleteCampaign() {
     {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['campaigns'] })
+      }
+    }
+  )
+}
+
+// Template hooks
+export function useTemplates(isPublic?: boolean, options?: UseApiOptions<any[]>) {
+  const { templateService } = require('@/lib/api/templates')
+  
+  return useApiQuery(
+    ['templates', isPublic],
+    () => templateService.getTemplates(isPublic),
+    options
+  )
+}
+
+export function useTemplate(templateId: string, options?: UseApiOptions<any>) {
+  const { templateService } = require('@/lib/api/templates')
+  
+  return useApiQuery(
+    ['template', templateId],
+    () => templateService.getTemplateById(templateId),
+    {
+      enabled: !!templateId,
+      ...options
+    }
+  )
+}
+
+export function useCreateTemplate() {
+  const { templateService } = require('@/lib/api/templates')
+  const queryClient = useQueryClient()
+  
+  return useApiMutation(
+    (data: any) => templateService.createTemplate(data),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['templates'] })
+      }
+    }
+  )
+}
+
+export function useUpdateTemplate() {
+  const { templateService } = require('@/lib/api/templates')
+  const queryClient = useQueryClient()
+  
+  return useApiMutation(
+    ({ id, data }: { id: string; data: any }) => templateService.updateTemplate(id, data),
+    {
+      onSuccess: (_, { id }) => {
+        queryClient.invalidateQueries({ queryKey: ['templates'] })
+        queryClient.invalidateQueries({ queryKey: ['template', id] })
+      }
+    }
+  )
+}
+
+export function useDeleteTemplate() {
+  const { templateService } = require('@/lib/api/templates')
+  const queryClient = useQueryClient()
+  
+  return useApiMutation(
+    (id: string) => templateService.deleteTemplate(id),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['templates'] })
       }
     }
   )
